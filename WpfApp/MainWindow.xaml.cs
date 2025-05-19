@@ -22,24 +22,24 @@ namespace WpfApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Dictionary<DTO.model.Medarbejder, string> medarbejderMap;
-        private ObservableCollection<string> visningsTekster;
+        
+        
         public MainWindow()
         {
             InitializeComponent();
 
-            medarbejderMap = MedarbejderBLL.GetMedarbejderVisningsMap();
-            visningsTekster = new ObservableCollection<string>(medarbejderMap.Values);
+            List<DTO.model.Medarbejder> medarbejdereDTO = MedarbejderBLL.GetMedarbejdere();
 
-            //ObservableCollection<KeyValuePair<DTO.model.Medarbejder, string>> medarbejdere = new ObservableCollection<KeyValuePair<DTO.model.Medarbejder, string>>();
+            ObservableCollection<DTO.model.Medarbejder> medarbejdere = new ObservableCollection<DTO.model.Medarbejder>(medarbejdereDTO);
+                 
+            MedarbejderListBox.ItemsSource = medarbejdere;
+            MedarbejderListBox.DisplayMemberPath = "Initialer";
 
-            //ObservableCollection<DTO.model.Medarbejder> medarbejdere = new ObservableCollection<DTO.model.Medarbejder>(MedarbejderBLL.GetMedarbejdere());
-
-            MedarbejderListBox.ItemsSource = visningsTekster;
         }
 
-        
+        private void OpretMedarbejderAction(object sender, RoutedEventArgs e)
+        {
 
-        
+        }
     }
 }
