@@ -13,7 +13,8 @@ namespace DAL.model
         public string CPRNummer { get; set; }
         public string Navn { get; set; }
         public virtual Afdeling Afdeling { get; set; }
-        public virtual Tidsregistrering Tidsregistrering { get; set;}
+        public virtual List<Tidsregistrering> Tidsregistreringer { get; set; } = new List<Tidsregistrering>();
+        
 
         public Medarbejder() { }
         public Medarbejder(string initialer, string cPRNummer, string navn, Afdeling afdeling)
@@ -23,6 +24,7 @@ namespace DAL.model
             CPRNummer = cPRNummer;
             Navn = navn;
             Afdeling = afdeling;
+           
             
         }
     }

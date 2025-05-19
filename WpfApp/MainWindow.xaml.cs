@@ -1,6 +1,7 @@
 ﻿using BLL;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,16 +22,24 @@ namespace WpfApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Dictionary<DTO.model.Medarbejder, string> medarbejderMap;
+        private ObservableCollection<string> visningsTekster;
         public MainWindow()
         {
             InitializeComponent();
+
+            medarbejderMap = MedarbejderBLL.GetMedarbejderVisningsMap();
+            visningsTekster = new ObservableCollection<string>(medarbejderMap.Values);
+
+            //ObservableCollection<KeyValuePair<DTO.model.Medarbejder, string>> medarbejdere = new ObservableCollection<KeyValuePair<DTO.model.Medarbejder, string>>();
+
+            //ObservableCollection<DTO.model.Medarbejder> medarbejdere = new ObservableCollection<DTO.model.Medarbejder>(MedarbejderBLL.GetMedarbejdere());
+
+            MedarbejderListBox.ItemsSource = visningsTekster;
         }
 
         
 
-        private void OpretDatabase(object sender, RoutedEventArgs e)
-        {
-            MedarbejderBLL.GetMedarbejdere();
-        }
+        
     }
 }
