@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL.model
+namespace DTO.model
 {
     public class Tidsregistrering
     {
@@ -22,7 +22,4 @@ namespace DAL.model
             SagsId = sagsId;
         }
     }
-
-
-
 }
