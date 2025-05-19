@@ -7,7 +7,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button x:Name="opretDatabaseButton" Content="Opret Database" HorizontalAlignment="Left" Margin="228,186,0,0" VerticalAlignment="Top" Click="OpretDatabase"/>
+        
 
+       
+        <ListBox x:Name="MedarbejderListBox" />
+
+        
+        <Button Height="30" Width="200" Content="Opret Ny Medarbejder"/>
     </Grid>
 </Window>
