@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL.model
+namespace DTO.model
 {
     public class Afdeling
     {
         public int Id { get; set; }
         public string Navn { get; set; }
         public int Nummer { get; set; }
-        public virtual List<Sag> Sager { get; set; } = new List<Sag>();
+        public List<Sag> Sager { get; set; } = new List<Sag>();
 
         public Afdeling() { }
 
@@ -19,7 +19,7 @@ namespace DAL.model
         {
             Id = id;
             Navn = navn;
-            Nummer = nummer;          
+            Nummer = nummer;
         }
     }
 }

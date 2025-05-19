@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL.model
+namespace DTO.model
 {
     public class Medarbejder
     {
@@ -12,8 +12,8 @@ namespace DAL.model
         public string Initialer { get; set; }
         public string CPRNummer { get; set; }
         public string Navn { get; set; }
-        public virtual Afdeling Afdeling { get; set; }
-        public virtual Tidsregistrering Tidsregistrering { get; set;}
+        public Afdeling Afdeling { get; set; }
+        public Tidsregistrering Tidsregistrering { get; set; }
 
         public Medarbejder() { }
         public Medarbejder(int id, string initialer, string cPRNummer, string navn, Afdeling afdeling)
@@ -23,7 +23,7 @@ namespace DAL.model
             CPRNummer = cPRNummer;
             Navn = navn;
             Afdeling = afdeling;
-            
+
         }
     }
 }
