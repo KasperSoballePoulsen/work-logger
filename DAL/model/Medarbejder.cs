@@ -16,9 +16,9 @@ namespace DAL.model
         public virtual Tidsregistrering Tidsregistrering { get; set;}
 
         public Medarbejder() { }
-        public Medarbejder(int id, string initialer, string cPRNummer, string navn, Afdeling afdeling)
+        public Medarbejder(string initialer, string cPRNummer, string navn, Afdeling afdeling)
         {
-            Id = id;
+            
             Initialer = initialer;
             CPRNummer = cPRNummer;
             Navn = navn;

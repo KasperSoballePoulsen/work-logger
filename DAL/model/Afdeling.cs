@@ -15,9 +15,9 @@ namespace DAL.model
 
         public Afdeling() { }
 
-        public Afdeling(int id, string navn, int nummer)
+        public Afdeling(string navn, int nummer)
         {
-            Id = id;
+            
             Navn = navn;
             Nummer = nummer;          
         }

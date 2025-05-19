@@ -8,6 +8,7 @@ namespace DAL.model
 {
     public class Tidsregistrering
     {
+        public int Id { get; set; }
         public DateTime StartTidspunkt { get; set; }
         public DateTime SlutTidspunkt { get; set; }
 

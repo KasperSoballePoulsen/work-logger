@@ -13,9 +13,9 @@ namespace DAL.model
         public string Beskrivelse { get; set; }
         public Sag() { }
 
-        public Sag(int id, string overskrift, string beskrivelse)
+        public Sag(string overskrift, string beskrivelse)
         {
-            Id = id;
+            
             Overskrift = overskrift;
             Beskrivelse = beskrivelse;
         }
