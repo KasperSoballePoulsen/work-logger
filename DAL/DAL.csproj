@@ -41,6 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="mappers\AfdelingMapper.cs" />
+    <Compile Include="mappers\MedarbejderMapper.cs" />
+    <Compile Include="mappers\SagMapper.cs" />
+    <Compile Include="mappers\TidsregistreringMapper.cs" />
     <Compile Include="model\Afdeling.cs" />
     <Compile Include="model\Medarbejder.cs" />
     <Compile Include="model\Sag.cs" />
@@ -49,8 +53,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="context\" />
-    <Folder Include="mappers\" />
     <Folder Include="repositories\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DTO\DTO.csproj">
+      <Project>{89d93d88-dab0-4716-a0bb-9d2d072c476b}</Project>
+      <Name>DTO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
