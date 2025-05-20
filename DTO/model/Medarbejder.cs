@@ -13,7 +13,7 @@ namespace DTO.model
         public string CPRNummer { get; set; }
         public string Navn { get; set; }
         public Afdeling Afdeling { get; set; }
-        public Tidsregistrering Tidsregistrering { get; set; }
+        public List<Tidsregistrering> Tidsregistreringer { get; set; } = new List<Tidsregistrering>();
 
         public Medarbejder() { }
         public Medarbejder(string initialer, string cPRNummer, string navn, Afdeling afdeling)

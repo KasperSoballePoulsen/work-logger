@@ -22,15 +22,15 @@ namespace WpfApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        
-        
+        private ObservableCollection<DTO.model.Medarbejder> medarbejdere;
+
         public MainWindow()
         {
             InitializeComponent();
 
             List<DTO.model.Medarbejder> medarbejdereDTO = MedarbejderBLL.GetMedarbejdere();
 
-            ObservableCollection<DTO.model.Medarbejder> medarbejdere = new ObservableCollection<DTO.model.Medarbejder>(medarbejdereDTO);
+            medarbejdere = new ObservableCollection<DTO.model.Medarbejder>(medarbejdereDTO);
                  
             MedarbejderListBox.ItemsSource = medarbejdere;
             MedarbejderListBox.DisplayMemberPath = "Initialer";
@@ -41,8 +41,28 @@ namespace WpfApp
         {
             var vindue = new OpretMedarbejderWindow();
             
-            vindue.Show();
+            vindue.ShowDialog();
 
+            List<DTO.model.Medarbejder> updatedMedarbejderList = MedarbejderBLL.GetMedarbejdere();
+            medarbejdere.Clear();
+            foreach (DTO.model.Medarbejder medarbejder in updatedMedarbejderList)
+            {
+                medarbejdere.Add(medarbejder);
+            }
+        }
+
+        private void TidsregistreringerAction(object sender, RoutedEventArgs e)
+        {
+            DTO.model.Medarbejder valgteMedarbejder = MedarbejderListBox.SelectedItem as DTO.model.Medarbejder;
+
+            if (valgteMedarbejder == null)
+            {
+                MessageBox.Show("Vælg en medarbejder først.");
+                return;
+            }
+
+            var vindue = new TidsregistreringerWindow(valgteMedarbejder);
+            vindue.ShowDialog();
         }
     }
 }

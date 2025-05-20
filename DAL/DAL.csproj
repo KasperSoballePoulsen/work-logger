@@ -64,6 +64,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="repositories\AfdelingRepo.cs" />
     <Compile Include="repositories\MedarbejderRepo.cs" />
+    <Compile Include="repositories\TidsregistreringRepo.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

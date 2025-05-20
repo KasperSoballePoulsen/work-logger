@@ -14,7 +14,7 @@ namespace BLL
     {
         public static List<DTO.model.Medarbejder> GetMedarbejdere()
         {
-            List<DAL.model.Medarbejder> medarbejdereDAL = DAL.repositories.MedarbejderRepo.GetMedarbejdere();
+            List<DAL.model.Medarbejder> medarbejdereDAL = DAL.repositories.MedarbejderRepo.GetMedarbejdereWithoutTidsregistreringer();
             List<DTO.model.Medarbejder> medarbejdereDTO = new List<DTO.model.Medarbejder>();
 
             foreach (var medarbejderDAL in medarbejdereDAL)
