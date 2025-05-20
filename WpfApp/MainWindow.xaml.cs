@@ -39,6 +39,9 @@ namespace WpfApp
 
         private void OpretMedarbejderAction(object sender, RoutedEventArgs e)
         {
+            var vindue = new OpretMedarbejderWindow();
+            
+            vindue.Show();
 
         }
     }
