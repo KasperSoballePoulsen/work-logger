@@ -19,10 +19,28 @@ namespace DAL.context
             context.Afdelinger.Add(afdeling2);
             context.Afdelinger.Add(afdeling3);
 
-            context.Medarbejdere.Add(new model.Medarbejder("KSP","200802-1234", "Kasper", afdeling1));
-            context.Medarbejdere.Add(new model.Medarbejder("MWTB", "271002-4321", "Malthe", afdeling3));
+            
+            model.Medarbejder kasper = new model.Medarbejder("KSP", "200802-1234", "Kasper", afdeling1);
+            model.Medarbejder malthe = new model.Medarbejder("MWTB", "271002-4321", "Malthe", afdeling3);
+
+            
+            kasper.Tidsregistreringer.Add(new model.Tidsregistrering(
+                new DateTime(2024, 5, 1, 8, 0, 0),
+                new DateTime(2024, 5, 1, 16, 0, 0),
+                null
+            ));
+
+            kasper.Tidsregistreringer.Add(new model.Tidsregistrering(
+                new DateTime(2024, 5, 2, 9, 0, 0),
+                new DateTime(2024, 5, 2, 17, 0, 0),
+                null
+            ));
+
+            context.Medarbejdere.Add(kasper);
+            context.Medarbejdere.Add(malthe);
 
             context.SaveChanges();
         }
+
     }
 }

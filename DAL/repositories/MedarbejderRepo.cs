@@ -24,17 +24,28 @@ namespace DAL.repositories
 
         }
 
-        public static List<model.Medarbejder> GetMedarbejdere()
+        public static List<model.Medarbejder> GetMedarbejdereWithoutTidsregistreringer()
         {
             using (WorkLoggerContext context = new WorkLoggerContext())
             {
                 return (from m in context.Medarbejdere
                         .Include(m => m.Afdeling)
-                        .Include(m => m.Tidsregistreringer)
+                        
                         select m).ToList();
 
             }
         }
+
+        /*public static model.Medarbejder GetMedarbejderWithTidsregistreringer(int medarbejderId)
+        {
+            using (WorkLoggerContext context = new WorkLoggerContext())
+            {
+                return context.Medarbejdere
+                    .Include(m => m.Afdeling)
+                    .Include(m => m.Tidsregistreringer)
+                    .FirstOrDefault(m => m.Id == medarbejderId);
+            }
+        }*/
 
 
         public static List<string> GetMedarbejderInitialer()
