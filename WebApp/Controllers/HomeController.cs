@@ -1,8 +1,10 @@
-﻿using System;
+﻿using BLL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebApp.ViewModel;
 
 namespace WebApp.Controllers
 {
@@ -11,7 +13,19 @@ namespace WebApp.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            return View();
+            var model = new RegistreringViewModel();
+
+            model.Afdelinger = AfdelingBLL.GetAfdelinger()
+                .Select(a => new SelectListItem
+                {
+                    Value = a.Id.ToString(),
+                    Text = a.Navn
+                }).ToList();
+
+            
+
+
+            return View(model);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿@{
+﻿@model WebApp.ViewModel.RegistreringViewModel
+@{
     Layout = null;
 }
 
@@ -14,56 +15,15 @@
         <h1>Registrering af arbejdstid</h1>
         <!-- Afdelingsvalg -->
         <div style="margin-bottom: 10px;">
-            <label for="afdeling">Vælg afdeling:</label><br />
-            <select id="afdeling" name="afdeling" style="width: 100%;">
-                <option>IT & Udvikling</option>
-                <option>HR & Personale</option>
-                <option>Økonomi</option>
-            </select>
+            <label for="ValgtAfdelingId">Vælg afdeling:</label><br />
+            @Html.DropDownListFor(m => m.ValgtAfdelingId, Model.Afdelinger, "-- Vælg afdeling --", new { @style = "width: 100%;" })
         </div>
 
-        <!-- Medarbejdervalg -->
-        <div style="margin-bottom: 10px;">
-            <label for="medarbejder">Vælg medarbejder:</label><br />
-            <select id="medarbejder" name="medarbejder" style="width: 100%;">
-                <option>Kasper</option>
-                <option>Malthe</option>
-            </select>
-        </div>
-
-
-        <!-- Sagvalg -->
-        <div style="margin-bottom: 10px;">
-            <label for="sag">Vælg sag:</label><br />
-            <select id="sag" name="sag" style="width: 100%;">
-                <option>Intern IT-support</option>
-                <option>Systemopgradering</option>
-                <option>Udvikling af nyt system</option>
-            </select>
-        </div>
-
-        <!-- Dato -->
-        <div style="margin-bottom: 10px;">
-            <label for="dato">Vælg dato:</label><br />
-            <input type="date" id="dato" name="dato" style="width: 100%;" />
-        </div>
-
-        <!-- Starttidspunkt -->
-        <div style="margin-bottom: 10px;">
-            <label for="start">Starttidspunkt:</label><br />
-            <input type="time" id="start" name="start" style="width: 100%;" />
-        </div>
-
-        <!-- Sluttidspunkt -->
-        <div style="margin-bottom: 10px;">
-            <label for="slut">Sluttidspunkt:</label><br />
-            <input type="time" id="slut" name="slut" style="width: 100%;" />
-        </div>
-
-        <!-- Indsend -->
-        <div style="text-align: right;">
-            <button type="submit">Registrer tid</button>
-        </div>
+        
+    <!-- Indsend -->
+    <div style="text-align: right;">
+        <button type="submit">Registrer tid</button>
+    </div>
 
     </div>
 </body>
