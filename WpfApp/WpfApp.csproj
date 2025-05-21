@@ -68,6 +68,9 @@
     <Compile Include="MedarbejderOversigt.xaml.cs">
       <DependentUpon>MedarbejderOversigt.xaml</DependentUpon>
     </Compile>
+    <Compile Include="OpretSagWindow.xaml.cs">
+      <DependentUpon>OpretSagWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SagOversigt.xaml.cs">
       <DependentUpon>SagOversigt.xaml</DependentUpon>
     </Compile>
@@ -92,6 +95,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="OpretMedarbejderWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="OpretSagWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

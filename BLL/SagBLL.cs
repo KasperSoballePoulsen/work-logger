@@ -1,8 +1,10 @@
-﻿using DAL.repositories;
+﻿using DAL.mappers;
+using DAL.repositories;
 using DTO.model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -24,6 +26,33 @@ namespace BLL
         public static string GetSagOverskriftById(int id)
         {
             return SagRepo.GetSagOverskriftById(id);
+        }
+
+        public static void OpretSag(string overskrift, string beskrivelse, DTO.model.Afdeling afdeling)
+        {
+            string overskriftToRegister = overskrift.Trim().ToUpper();
+            string beskrivelseToRegister = beskrivelse.Trim();
+
+            if (overskriftToRegister.Count() == 0)
+            {
+                throw new ArgumentException("Overskrift skal skrives");
+
+            }
+            else if (beskrivelseToRegister.Count() == 0)
+            {
+                throw new ArgumentException("Beskrivelse skal skrives");
+            }
+            
+            else if (afdeling == null)
+            {
+                throw new ArgumentException("En afdeling skal vælges");
+            }
+            else
+            {
+                DTO.model.Sag sagDTO = new DTO.model.Sag(overskrift, beskrivelse);
+                DAL.model.Sag sagDAL = SagMapper.Map(sagDTO);
+                SagRepo.AddSag(sagDAL, afdeling.Id);
+            }
         }
     }
 }

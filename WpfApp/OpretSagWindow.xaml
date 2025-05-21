@@ -1,0 +1,43 @@
+﻿<Window x:Class="WpfApp.OpretSagWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp"
+        mc:Ignorable="d"
+        Title="OpretSagWindow" Height="450" Width="470">
+    <Grid Margin="0,0,10,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+           
+            <ColumnDefinition Width="*"/>
+            
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Opret Sag" 
+           FontSize="20" FontWeight="Bold" 
+           HorizontalAlignment="Center" 
+           Grid.Row="0" Grid.ColumnSpan="2" Margin="25"/>
+
+        <Label Grid.Row="1" Grid.Column="0" Content="Overskrift:" Margin="5"/>
+        <TextBox x:Name="OverskriftTextBox" Grid.Row="1" Grid.Column="1" Margin="5,5,64,5"/>
+
+        <Label Grid.Row="2" Grid.Column="0" Content="Beskrivelse:" Margin="5"/>
+        <TextBox x:Name="BeskrivelseTextBox" Grid.Row="2" Grid.Column="1" Margin="5,5,64,5"/>
+
+        
+
+        <Label Grid.Row="3" Grid.Column="0" Content="Afdeling:" Margin="5"/>
+        <ComboBox x:Name="AfdelingerComboBox" Grid.Row="3" Grid.Column="1" Margin="5,5,64,5" DisplayMemberPath="Navn"/>
+
+        <Button Content="Gem" Grid.Row="4" Grid.Column="1" Width="100" Margin="30" Click="OpretSagAction"></Button>
+    </Grid>
+</Window>
