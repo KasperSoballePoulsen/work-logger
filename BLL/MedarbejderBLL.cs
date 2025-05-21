@@ -63,10 +63,25 @@ namespace BLL
             return !exists;
         }
 
-        public static bool IsGyldigtCprFormat(string cprToCheck)
+        private static bool IsGyldigtCprFormat(string cprToCheck)
         {
             
             return Regex.IsMatch(cprToCheck, @"^\d{6}-\d{4}$");
+        }
+
+        public static List<DTO.model.Medarbejder> GetMedarbejdereFraAfdeling(int afdelingId)
+        {
+            List<DAL.model.Medarbejder> medarbejdereDAL = DAL.repositories.MedarbejderRepo.GetMedarbejdereFraAfdeling(afdelingId);
+            List<DTO.model.Medarbejder> medarbejdereDTO = new List<DTO.model.Medarbejder>();
+
+            foreach (var medarbejderDAL in medarbejdereDAL)
+            {
+                DTO.model.Medarbejder medarbejderDTO = DAL.mappers.MedarbejderMapper.Map(medarbejderDAL);
+                medarbejdereDTO.Add(medarbejderDTO);
+
+            }
+
+            return medarbejdereDTO;
         }
     }
 }

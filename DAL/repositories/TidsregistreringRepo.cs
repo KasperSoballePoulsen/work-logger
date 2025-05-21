@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace DAL.repositories
 {
@@ -22,5 +23,33 @@ namespace DAL.repositories
 
             }
         }
+
+        public static void OpretTidsregistrering(DateTime startTidspunkt, DateTime slutTidspunkt, int? sagsId, int medarbejderId)
+        {
+            using (var context = new WorkLoggerContext())
+            {
+                
+                var medarbejder = context.Medarbejdere
+                    .Include(m => m.Tidsregistreringer)
+                    .FirstOrDefault(m => m.Id == medarbejderId);
+
+                
+
+                
+                var nyTidsregistrering = new Tidsregistrering
+                {
+                    StartTidspunkt = startTidspunkt,
+                    SlutTidspunkt = slutTidspunkt,
+                    SagsId = sagsId
+                };
+
+                
+                medarbejder.Tidsregistreringer.Add(nyTidsregistrering);
+
+                
+                context.SaveChanges();
+            }
+        }
+
     }
 }

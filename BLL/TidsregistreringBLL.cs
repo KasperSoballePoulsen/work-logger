@@ -24,5 +24,12 @@ namespace BLL
 
             return tidsregistreringerDTO;
         }
+
+
+        public static void OpretTidsregistrering(DateTime startTidspunkt, DateTime slutTidspunkt, int? sagsId, int medarbejderId)
+        {
+            TidsregistreringRepo.OpretTidsregistrering(startTidspunkt, slutTidspunkt, sagsId, medarbejderId);
+
+        }
     }
 }
