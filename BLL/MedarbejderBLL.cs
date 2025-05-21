@@ -33,11 +33,11 @@ namespace BLL
             string cprToRegister = cpr.Trim();
             string navnToRegister = navn.Trim();
             
-            if (initialerToRegister.Count() == 0 || !isUnikkeInitialer(initialerToRegister))
+            if (initialerToRegister.Length == 0 || !isUnikkeInitialer(initialerToRegister))
             {
                 throw new ArgumentException("Initialer skal være en unik kombination af bogstaver");
 
-            } else if (navnToRegister.Count() == 0)
+            } else if (navnToRegister.Length == 0)
             {
                 throw new ArgumentException("Navn skal udfyldes");
             } else if (!IsGyldigtCprFormat(cprToRegister))
