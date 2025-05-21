@@ -113,6 +113,7 @@
     <Content Include="Views\Home\VaelgAfdeling.cshtml" />
     <Content Include="Views\Home\OpretTidsregistrering.cshtml" />
     <Content Include="Views\Home\TidsregistreringBekræftelse.cshtml" />
+    <Content Include="Views\Home\TidsregistreringFejlet.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
