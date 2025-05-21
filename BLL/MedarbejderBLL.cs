@@ -37,7 +37,7 @@ namespace BLL
             {
                 throw new ArgumentException("Initialer skal være en unik kombination af bogstaver");
 
-            } else if (navn.Count() == 0)
+            } else if (navnToRegister.Count() == 0)
             {
                 throw new ArgumentException("Navn skal udfyldes");
             } else if (!IsGyldigtCprFormat(cprToRegister))

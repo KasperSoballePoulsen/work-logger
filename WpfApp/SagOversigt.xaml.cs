@@ -24,6 +24,7 @@ namespace WpfApp
     {
         private ObservableCollection<DTO.model.Sag> sager = new ObservableCollection<DTO.model.Sag>();
         private List<DTO.model.Afdeling> afdelinger = new List<DTO.model.Afdeling>();
+        DTO.model.Afdeling afdelingValgt = null;
         public SagOversigt()
         {
             InitializeComponent();
@@ -32,15 +33,42 @@ namespace WpfApp
 
             AfdelingComboBox.ItemsSource = afdelinger;
 
-            AfdelingComboBox.SelectionChanged += AdelingComboBoxChanged;
+            AfdelingComboBox.SelectionChanged += AfdelingComboBoxChanged;
         }
 
-        private void AdelingComboBoxChanged(object sender, SelectionChangedEventArgs e)
+        private void AfdelingComboBoxChanged(object sender, SelectionChangedEventArgs e)
         {
-            DTO.model.Afdeling afdelingValgt = AfdelingComboBox.SelectedItem as DTO.model.Afdeling;
-            List<DTO.model.Sag> sager = SagBLL.GetSagerByAfdelingId(afdelingValgt.Id);
+            afdelingValgt = AfdelingComboBox.SelectedItem as DTO.model.Afdeling;
+            UpdateSagerList();
+
 
             SagListBox.ItemsSource = sager;
+        }
+
+        private void OpretSagAction(object sender, RoutedEventArgs e)
+        {
+           
+            var vindue = new OpretSagWindow();
+
+            vindue.ShowDialog();
+            if (afdelingValgt != null)
+            {
+
+                UpdateSagerList();
+            }
+
+            
+        }
+
+        private void UpdateSagerList()
+        {
+            List<DTO.model.Sag> updatedSagerList = SagBLL.GetSagerByAfdelingId(afdelingValgt.Id);
+            sager.Clear();
+
+            foreach (DTO.model.Sag sag in updatedSagerList)
+            {
+                sager.Add(sag);
+            }
         }
     }
 }

@@ -11,6 +11,22 @@ namespace DAL.repositories
 {
     public static class SagRepo
     {
+        public static void AddSag(Sag sagDAL, int afdelingId)
+        {
+            using (WorkLoggerContext context = new WorkLoggerContext())
+            {
+                
+                var afdeling = context.Afdelinger
+                    .Include(a => a.Sager)
+                    .FirstOrDefault(a => a.Id == afdelingId);
+
+                
+                afdeling.Sager.Add(sagDAL);
+
+                context.SaveChanges();
+            }
+        }
+
         public static List<Sag> GetSagerByAfdelingId(int afdelingId)
         {
             using (WorkLoggerContext context = new WorkLoggerContext())
