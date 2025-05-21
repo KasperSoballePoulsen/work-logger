@@ -31,6 +31,7 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult HentOpretTidsregistreringView(RegistreringViewModel model)
         {
+            
             model.Medarbejdere = MedarbejderBLL
                 .GetMedarbejdereFraAfdeling(model.ValgtAfdelingId)
                     .Select(m => new SelectListItem { Value = m.Id.ToString(), Text = m.Navn })
@@ -39,6 +40,10 @@ namespace WebApp.Controllers
             model.Sager = SagBLL.GetSagerByAfdelingId(model.ValgtAfdelingId)
                 .Select(m => new SelectListItem { Value = m.Id.ToString(), Text = m.Overskrift})
                 .ToList();
+
+            model.Dato = DateTime.Today.ToString("yyyy-MM-dd");
+            model.StartTidspunkt = "08:00";
+            model.SlutTidspunkt = "16:00";
 
             return View("OpretTidsregistrering", model);
            
@@ -65,8 +70,8 @@ namespace WebApp.Controllers
             }
             catch
             {
-                ModelState.AddModelError("", "Noget gik galt. Prøv igen.");
-                return View("OpretTidsregistrering", model);
+                
+                return View("TidsregistreringFejlet");
             }
 
 

@@ -18,12 +18,12 @@
     {
         <div style="margin-bottom: 10px;">
             <label>Vælg medarbejder:</label><br />
-            @Html.DropDownListFor(m => m.ValgtMedarbejderId, Model.Medarbejdere, "-- vælg --")
+            @Html.DropDownListFor(m => m.ValgtMedarbejderId, Model.Medarbejdere)
         </div>
 
         <div style="margin-bottom: 10px;">
             <label>Vælg sag:</label><br />
-            @Html.DropDownListFor(m => m.ValgtSagId, Model.Sager, "-- vælg --")
+            @Html.DropDownListFor(m => m.ValgtSagId, Model.Sager, "Ingen Sag")
         </div>
 
         <div style="margin-bottom: 10px;">

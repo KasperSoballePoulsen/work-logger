@@ -17,7 +17,7 @@
     @using (Html.BeginForm("HentOpretTidsregistreringView", "Home", FormMethod.Post))
     {
         <label>Vælg afdeling:</label>
-        @Html.DropDownListFor(m => m.ValgtAfdelingId, Model.Afdelinger, "-- vælg --")
+        @Html.DropDownListFor(m => m.ValgtAfdelingId, Model.Afdelinger)
         <button type="submit">Næste</button>
     }
 
