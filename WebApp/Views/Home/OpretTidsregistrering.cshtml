@@ -1,0 +1,51 @@
+﻿@model WebApp.ViewModel.RegistreringViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Registrering af arbejdstid</title>
+</head>
+<body>
+
+
+    <h1>Registrering af arbejdstid</h1>
+
+    @using (Html.BeginForm("GemTidsregistrering", "Home", FormMethod.Post))
+    {
+        <div style="margin-bottom: 10px;">
+            <label>Vælg medarbejder:</label><br />
+            @Html.DropDownListFor(m => m.ValgtMedarbejderId, Model.Medarbejdere, "-- vælg --")
+        </div>
+
+        <div style="margin-bottom: 10px;">
+            <label>Vælg sag:</label><br />
+            @Html.DropDownListFor(m => m.ValgtSagId, Model.Sager, "-- vælg --")
+        </div>
+
+        <div style="margin-bottom: 10px;">
+            <label>Dato:</label><br />
+            @Html.TextBoxFor(m => m.Dato, new { @type = "date" })
+        </div>
+
+        <div style="margin-bottom: 10px;">
+            <label>Starttidspunkt:</label><br />
+            @Html.TextBoxFor(m => m.StartTidspunkt, new { @type = "time" })
+        </div>
+
+        <div style="margin-bottom: 10px;">
+            <label>Sluttidspunkt:</label><br />
+            @Html.TextBoxFor(m => m.SlutTidspunkt, new { @type = "time" })
+        </div>
+
+        <div>
+            <button type="submit">Gem Tidsregistrering</button>
+        </div>
+    }
+
+
+</body>
+</html>

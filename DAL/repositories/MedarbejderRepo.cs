@@ -24,6 +24,17 @@ namespace DAL.repositories
 
         }
 
+        public static List<Medarbejder> GetMedarbejdereFraAfdeling(int afdelingId)
+        {
+            using (WorkLoggerContext context = new WorkLoggerContext())
+            {
+                return context.Medarbejdere
+                    .Include(m => m.Afdeling)
+                    .Where(m => m.Afdeling.Id == afdelingId)
+                    .ToList();
+            }
+        }
+
         public static List<model.Medarbejder> GetMedarbejdereWithoutTidsregistreringer()
         {
             using (WorkLoggerContext context = new WorkLoggerContext())

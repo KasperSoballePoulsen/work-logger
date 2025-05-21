@@ -6,10 +6,10 @@ using System.Web.Mvc;
 
 namespace WebApp.ViewModel
 {
-	public class RegistreringViewModel
+    public class RegistreringViewModel
     {
-        public int? ValgtAfdelingId { get; set; }
-        public int? ValgtMedarbejderId { get; set; }
+        public int ValgtAfdelingId { get; set; }
+        public int ValgtMedarbejderId { get; set; }
         public int? ValgtSagId { get; set; }
 
         public string Dato { get; set; }

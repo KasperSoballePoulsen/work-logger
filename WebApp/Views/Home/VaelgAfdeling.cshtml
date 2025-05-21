@@ -1,0 +1,26 @@
+﻿@model WebApp.ViewModel.RegistreringViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Registrering af arbejdstid</title>
+</head>
+<body>
+
+
+    <h1>Registrering af arbejdstid</h1>
+
+    @using (Html.BeginForm("HentOpretTidsregistreringView", "Home", FormMethod.Post))
+    {
+        <label>Vælg afdeling:</label>
+        @Html.DropDownListFor(m => m.ValgtAfdelingId, Model.Afdelinger, "-- vælg --")
+        <button type="submit">Næste</button>
+    }
+
+
+</body>
+</html>
