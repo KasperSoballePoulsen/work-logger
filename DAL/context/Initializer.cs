@@ -19,7 +19,29 @@ namespace DAL.context
             context.Afdelinger.Add(afdeling2);
             context.Afdelinger.Add(afdeling3);
 
-            
+            model.Sag sag1 = new model.Sag(
+                "Intern IT-support",
+                "Håndtering af daglige supporthenvendelser fra medarbejdere vedrørende hardwareproblemer, softwarefejl og netværksadgang. Omfatter fejlsøgning, dokumentation og evt. kontakt til eksterne leverandører."
+            );
+
+            model.Sag sag2 = new model.Sag(
+                "Systemopgradering",
+                "Planlægning og implementering af opgradering af virksomhedens servere og operativsystemer. Omfatter test af kompatibilitet, backup af data, koordinering med brugere og nedetidshåndtering."
+            );
+
+            model.Sag sag3 = new model.Sag(
+                "Udvikling af nyt system",
+                "Analyse, design og udvikling af et internt tidsregistreringssystem til medarbejdere. Projektet inkluderer kravspecifikation, brugergrænseflade, databaseintegration og testforløb frem mod udrulning."
+            );
+
+
+
+            afdeling1.Sager.Add(sag1);
+            afdeling1.Sager.Add(sag2);
+            afdeling1.Sager.Add(sag3);
+
+            context.SaveChanges();
+
             model.Medarbejder kasper = new model.Medarbejder("KSP", "200802-1234", "Kasper", afdeling1);
             model.Medarbejder malthe = new model.Medarbejder("MWTB", "271002-4321", "Malthe", afdeling3);
 
@@ -36,8 +58,18 @@ namespace DAL.context
                 null
             ));
 
+            kasper.Tidsregistreringer.Add(new model.Tidsregistrering(
+                new DateTime(2025, 8, 10, 9, 0, 0),
+                new DateTime(2025, 8, 10, 17, 0, 0),
+                sag1.Id
+            ));
             context.Medarbejdere.Add(kasper);
             context.Medarbejdere.Add(malthe);
+
+
+            
+
+            
 
             context.SaveChanges();
         }
