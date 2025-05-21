@@ -45,7 +45,7 @@
         <ListBox x:Name="TidsregistreringerListBox" Grid.Row="2" Grid.Column="0" Margin="20">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding StartTidspunkt, StringFormat=d}" />
+                    <TextBlock Text="{Binding StartTidspunkt, StringFormat={}{0:dd-MM-yyyy}}" />
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
@@ -59,31 +59,33 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
+                
+                
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="150"/>
             </Grid.ColumnDefinitions>
 
-            
+
+            <!-- Sag overskrift -->
             <TextBlock Text="Sag overskrift:" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,10,5"/>
-            <TextBlock  Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Margin="0,0,0,5"/>
+            <TextBlock Text="{Binding ElementName=TidsregistreringerListBox, Path=SelectedItem.SagOverskrift}" 
+           Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Margin="0,0,0,5"/>
 
-            <TextBlock Text="Sag Beskrivelse:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,10,5"/>
-            <TextBlock  Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Margin="0,0,0,5"/>
+            <!-- Starttidspunkt -->
+            <TextBlock Text="Starttidspunkt:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,10,5"/>
+            <TextBlock Text="{Binding ElementName=TidsregistreringerListBox, Path=SelectedItem.StartTidspunkt, StringFormat={}{0:HH:mm}}"
+           Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Margin="0,0,0,5"/>
 
-            
-            <TextBlock Text="Starttidspunkt:" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,10,5"/>
-            <TextBlock  Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Margin="0,0,0,5"/>
+            <!-- Sluttidspunkt -->
+            <TextBlock Text="Sluttidspunkt:" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,10,5"/>
+            <TextBlock Text="{Binding ElementName=TidsregistreringerListBox, Path=SelectedItem.SlutTidspunkt, StringFormat={}{0:HH:mm}}"
+           Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Margin="0,0,0,5"/>
 
-            
-            <TextBlock Text="Sluttidspunkt:" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,10,5"/>
-            <TextBlock  Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" Margin="0,0,0,5"/>
 
-            
-            
+
+
         </Grid>
 
         

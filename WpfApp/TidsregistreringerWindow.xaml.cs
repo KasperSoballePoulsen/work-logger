@@ -14,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WpfApp.viewModels;
 
 namespace WpfApp
 {
@@ -23,7 +24,8 @@ namespace WpfApp
     public partial class TidsregistreringerWindow : Window
     {
         private List<DTO.model.Tidsregistrering> alleTidsregistreringer;
-        private ObservableCollection<DTO.model.Tidsregistrering> tidsregistreringer;
+        //private ObservableCollection<DTO.model.Tidsregistrering> tidsregistreringer;
+        private ObservableCollection<TidsregistreringViewModel> tidsregistreringer;
         private DTO.model.Medarbejder medarbejder;
         public TidsregistreringerWindow(DTO.model.Medarbejder medarbejder)
         {
@@ -32,8 +34,7 @@ namespace WpfApp
             alleTidsregistreringer = TidsregistreringBLL.GetTidsregistreringer(medarbejder.Id);
 
             this.medarbejder = medarbejder;
-            tidsregistreringer = new ObservableCollection<DTO.model.Tidsregistrering>();
-      
+            tidsregistreringer = new ObservableCollection<TidsregistreringViewModel>();
             TidsregistreringerListBox.ItemsSource = tidsregistreringer;
 
             SetUpComboBoxesAndCheckBox();
@@ -114,13 +115,19 @@ namespace WpfApp
             PeriodeComboBox.IsEnabled = false;
 
             tidsregistreringer.Clear();
-
-            foreach (DTO.model.Tidsregistrering tidsregistrering in alleTidsregistreringer)
+            foreach (var tidsregistrering in alleTidsregistreringer)
             {
-                tidsregistreringer.Add(tidsregistrering);
+                string sagOverskrift = tidsregistrering.SagsId.HasValue ? SagBLL.GetSagOverskriftById(tidsregistrering.SagsId.Value) : "Ingen sag";
+
+                tidsregistreringer.Add(new TidsregistreringViewModel
+                {
+                    StartTidspunkt = tidsregistrering.StartTidspunkt,
+                    SlutTidspunkt = tidsregistrering.SlutTidspunkt,
+                    SagOverskrift = sagOverskrift
+                });
             }
 
-            
+
         }
 
         private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
@@ -164,11 +171,19 @@ namespace WpfApp
                     kalender.GetWeekOfYear(r.StartTidspunkt, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday) == ugenummer);
             }
 
-           
+
             tidsregistreringer.Clear();
-            foreach (var t in filtreret)
+            foreach (var tidsregistrering in filtreret)
             {
-                tidsregistreringer.Add(t);
+                string sagOverskrift = tidsregistrering.SagsId.HasValue
+                    ? SagBLL.GetSagOverskriftById(tidsregistrering.SagsId.Value) : "Ingen sag";
+
+                tidsregistreringer.Add(new TidsregistreringViewModel
+                {
+                    StartTidspunkt = tidsregistrering.StartTidspunkt,
+                    SlutTidspunkt = tidsregistrering.SlutTidspunkt,
+                    SagOverskrift = sagOverskrift
+                });
             }
         }
 
