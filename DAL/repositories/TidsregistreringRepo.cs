@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL.repositories
 {
-    public class TidsregistreringRepo
+    public static class TidsregistreringRepo
     {
         public static List<Tidsregistrering> GetTidsregistreringer(int medarbejderID)
         {
