@@ -65,6 +65,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="MedarbejderOversigt.xaml.cs">
+      <DependentUpon>MedarbejderOversigt.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SagOversigt.xaml.cs">
+      <DependentUpon>SagOversigt.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TidsregistreringerWindow.xaml.cs">
       <DependentUpon>TidsregistreringerWindow.xaml</DependentUpon>
     </Compile>
@@ -81,7 +87,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MedarbejderOversigt.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="OpretMedarbejderWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SagOversigt.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
