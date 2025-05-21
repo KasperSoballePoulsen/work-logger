@@ -70,5 +70,23 @@ namespace WpfApp
                 sager.Add(sag);
             }
         }
+
+        private void OpdaterSagAction(object sender, RoutedEventArgs e)
+        {
+            DTO.model.Sag sag = SagListBox.SelectedItem as DTO.model.Sag;
+            if (sag == null)
+            {
+                MessageBox.Show("Du skal vælge en sag først");
+                return;
+            }
+            var vindue = new OpdaterSagWindow(sag);
+
+            vindue.ShowDialog();
+            if (afdelingValgt != null)
+            {
+                UpdateSagerList();
+            }
+
+        }
     }
 }

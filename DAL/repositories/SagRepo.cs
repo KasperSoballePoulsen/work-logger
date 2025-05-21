@@ -51,5 +51,20 @@ namespace DAL.repositories
 
             }
         }
+
+        public static void OpdaterSag(string updatedOverskrift, string updatedBeskrivelse, int sagId)
+        {
+            using (WorkLoggerContext context = new WorkLoggerContext())
+            {
+                DAL.model.Sag sag = context.Sager.FirstOrDefault(s => s.Id == sagId);
+
+                
+                sag.Overskrift = updatedOverskrift;
+                sag.Beskrivelse = updatedBeskrivelse;
+
+                context.SaveChanges();
+            }
+        }
+
     }
 }

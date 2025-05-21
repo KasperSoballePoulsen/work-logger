@@ -31,9 +31,13 @@
         <TextBox x:Name="OverskriftTextBox" Grid.Row="1" Grid.Column="1" Margin="5,5,64,5"/>
 
         <Label Grid.Row="2" Grid.Column="0" Content="Beskrivelse:" Margin="5"/>
-        <TextBox x:Name="BeskrivelseTextBox" Grid.Row="2" Grid.Column="1" Margin="5,5,64,5"/>
-
-        
+        <TextBox x:Name="BeskrivelseTextBox"
+        Grid.Row="2" Grid.Column="1"
+        Margin="5,5,20,5"
+        AcceptsReturn="True"
+        TextWrapping="Wrap"
+        Height="100"
+        VerticalScrollBarVisibility="Auto"/>
 
         <Label Grid.Row="3" Grid.Column="0" Content="Afdeling:" Margin="5"/>
         <ComboBox x:Name="AfdelingerComboBox" Grid.Row="3" Grid.Column="1" Margin="5,5,64,5" DisplayMemberPath="Navn"/>

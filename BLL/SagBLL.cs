@@ -28,17 +28,29 @@ namespace BLL
             return SagRepo.GetSagOverskriftById(id);
         }
 
+        public static void OpdaterSag(string updatedOverskrift, string updatedBeskrivelse, int sagId)
+        {
+            if (updatedOverskrift.Length == 0 || updatedBeskrivelse.Length == 0)
+            {
+                throw new ArgumentException("Ingen felter må være tomme");
+
+            }
+
+            SagRepo.OpdaterSag(updatedOverskrift, updatedBeskrivelse, sagId);
+
+        }
+
         public static void OpretSag(string overskrift, string beskrivelse, DTO.model.Afdeling afdeling)
         {
             string overskriftToRegister = overskrift.Trim().ToUpper();
             string beskrivelseToRegister = beskrivelse.Trim();
 
-            if (overskriftToRegister.Count() == 0)
+            if (overskriftToRegister.Length == 0)
             {
                 throw new ArgumentException("Overskrift skal skrives");
 
             }
-            else if (beskrivelseToRegister.Count() == 0)
+            else if (beskrivelseToRegister.Length == 0)
             {
                 throw new ArgumentException("Beskrivelse skal skrives");
             }
