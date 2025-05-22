@@ -21,8 +21,9 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        
-        <TextBlock Text="Tidsregistreringer" 
+
+        <TextBlock 
+            Text="{Binding StringFormat=Tidsregistreringer for {0}}" 
             FontSize="20" FontWeight="Bold" 
             HorizontalAlignment="Center"
             Grid.Row="0" Grid.ColumnSpan="2" Margin="20"/>
