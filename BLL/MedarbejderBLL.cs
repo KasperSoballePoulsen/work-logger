@@ -33,7 +33,7 @@ namespace BLL
             string cprToRegister = cpr.Trim();
             string navnToRegister = navn.Trim();
             
-            if (initialerToRegister.Length == 0 || !isUnikkeInitialer(initialerToRegister))
+            if (initialerToRegister.Length == 0 || !IsUnikkeInitialer(initialerToRegister))
             {
                 throw new ArgumentException("Initialer skal være en unik kombination af bogstaver");
 
@@ -56,7 +56,7 @@ namespace BLL
 
 
 
-        private static bool isUnikkeInitialer(string initialerToCheck)
+        private static bool IsUnikkeInitialer(string initialerToCheck)
         {
             List<string> medarbejderInitialer = MedarbejderRepo.GetMedarbejderInitialer();
             bool exists = medarbejderInitialer.Any(initialer => initialer == initialerToCheck);
@@ -82,6 +82,26 @@ namespace BLL
             }
 
             return medarbejdereDTO;
+        }
+
+        public static void OpdaterMedarbejder(string updatedInitialer, string updatedNavn, string updatedCprNr, int medarbejderId)
+        {
+            if (updatedInitialer.Length == 0 || updatedNavn.Length == 0 || updatedCprNr.Length == 0)
+            {
+                throw new ArgumentException("Ingen felter må være tomme");
+
+            }
+            if (!IsUnikkeInitialer(updatedInitialer))
+            {
+                throw new ArgumentException("Initialer skal være en unik kombination af bogstaver");
+
+            }
+            if (!IsGyldigtCprFormat(updatedCprNr))
+            {
+                throw new ArgumentException("CPR-nummer skal skrives på formatet DDMMYY-XXXX");
+            }
+
+            MedarbejderRepo.OpdaterMedarbejder(updatedInitialer, updatedNavn, updatedCprNr, medarbejderId);
         }
     }
 }

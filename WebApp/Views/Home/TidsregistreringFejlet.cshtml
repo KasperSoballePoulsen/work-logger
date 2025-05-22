@@ -14,6 +14,10 @@
     <div>
         <h1>Noget gik galt :(</h1>
         <h2>Din tidsregistrering blev ikke gemt</h2>
+        @if (ViewBag.Fejlbesked != null)
+        {
+            <p style="color: red;">@ViewBag.Fejlbesked</p>
+        }
         <a href="@Url.Action("Index", "Home")">
             <button type="button">Start forfra</button>
         </a>

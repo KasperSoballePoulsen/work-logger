@@ -65,12 +65,13 @@ namespace WebApp.Controllers
                 
 
                 TidsregistreringBLL.OpretTidsregistrering(startTidspunkt,slutTidspunkt, model.ValgtSagId, model.ValgtMedarbejderId);
+                ViewBag.Succesbesked = $"Tidsregistreringen fra kl. {startTidspunkt:HH:mm} til kl. {slutTidspunkt:HH:mm} den {startTidspunkt:dd-MM-yyyy} er gemt succesfuldt!";
 
-                return View("TidsregistreringBekræftelse", model);
+                return View("TidsregistreringBekræftelse");
             }
-            catch
+            catch (Exception ex)
             {
-                
+                ViewBag.Fejlbesked = ex.Message;
                 return View("TidsregistreringFejlet");
             }
 

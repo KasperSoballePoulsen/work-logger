@@ -43,6 +43,13 @@ namespace WpfApp
 
             vindue.ShowDialog();
 
+            OpdaterMedarbejderList();
+
+            
+        }
+
+        private void OpdaterMedarbejderList()
+        {
             List<DTO.model.Medarbejder> updatedMedarbejderList = MedarbejderBLL.GetMedarbejdere();
             medarbejdere.Clear();
             foreach (DTO.model.Medarbejder medarbejder in updatedMedarbejderList)
@@ -63,6 +70,23 @@ namespace WpfApp
 
             var vindue = new TidsregistreringerWindow(valgteMedarbejder);
             vindue.ShowDialog();
+        }
+
+        private void OpdaterMedarbejderAction(object sender, RoutedEventArgs e)
+        {
+            DTO.model.Medarbejder medarbejder = MedarbejderListBox.SelectedItem as DTO.model.Medarbejder;
+            if (medarbejder == null)
+            {
+                MessageBox.Show("Du skal vælge en medarbejder først");
+                return;
+            }
+            var vindue = new OpdaterMedarbejderWindow(medarbejder);
+
+            vindue.ShowDialog();
+            
+            OpdaterMedarbejderList();
+            
+
         }
     }
 }

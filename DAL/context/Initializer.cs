@@ -19,8 +19,6 @@ namespace DAL.context
 
 
 
-
-
             var sag1 = new model.Sag(
             "Intern IT-support",
             "Håndtering af daglige supporthenvendelser fra medarbejdere vedrørende hardwareproblemer, softwarefejl og netværksadgang. Omfatter fejlsøgning, dokumentation og evt. kontakt til eksterne leverandører."
@@ -42,8 +40,6 @@ namespace DAL.context
             afdeling1.Sager.AddRange(new[] { sag1, sag2, sag3, sag4, sag5 });
             
 
-
-
             context.SaveChanges();
 
             var kasper = new model.Medarbejder("KSP", "200802-1234", "Kasper", afdeling1);
@@ -53,32 +49,47 @@ namespace DAL.context
             var frederik = new model.Medarbejder("FHK", "199403-1111", "Frederik", afdeling3);
             var emil = new model.Medarbejder("ELH", "19950202-1111", "Emil", afdeling2);
 
-            // Tidsregistreringer for Kasper
+
             kasper.Tidsregistreringer.Add(new model.Tidsregistrering(
-                new DateTime(2024, 5, 6, 8, 0, 0),
-                new DateTime(2024, 5, 6, 12, 0, 0),
+                new DateTime(2025, 5, 5, 8, 0, 0),   
+                new DateTime(2025, 5, 5, 12, 0, 0),  
                 sag1.Id));
 
             kasper.Tidsregistreringer.Add(new model.Tidsregistrering(
-                new DateTime(2024, 5, 6, 12, 30, 0),
-                new DateTime(2024, 5, 6, 16, 0, 0),
+                new DateTime(2025, 5, 6, 8, 0, 0),   
+                new DateTime(2025, 5, 6, 16, 0, 0),  
                 sag2.Id));
 
-            
+            kasper.Tidsregistreringer.Add(new model.Tidsregistrering(
+                new DateTime(2025, 5, 7, 8, 0, 0),   
+                new DateTime(2025, 5, 7, 16, 0, 0), 
+                sag1.Id));
+
+            kasper.Tidsregistreringer.Add(new model.Tidsregistrering(
+                new DateTime(2025, 5, 8, 8, 0, 0),   
+                new DateTime(2025, 5, 8, 16, 0, 0),  
+                sag2.Id));
+
+            kasper.Tidsregistreringer.Add(new model.Tidsregistrering(
+                new DateTime(2025, 5, 9, 8, 0, 0),   
+                new DateTime(2025, 5, 9, 16, 0, 0),  
+                sag1.Id));
+
+
             jonas.Tidsregistreringer.Add(new model.Tidsregistrering(
-                new DateTime(2024, 5, 7, 9, 0, 0),
-                new DateTime(2024, 5, 7, 11, 30, 0),
+                new DateTime(2025, 5, 7, 9, 0, 0),
+                new DateTime(2025, 5, 7, 11, 30, 0),
                 sag2.Id));
 
             jonas.Tidsregistreringer.Add(new model.Tidsregistrering(
-                new DateTime(2024, 5, 7, 12, 30, 0),
-                new DateTime(2024, 5, 7, 15, 30, 0),
+                new DateTime(2025, 5, 7, 12, 30, 0),
+                new DateTime(2025, 5, 7, 15, 30, 0),
                 sag3.Id));
 
             
             louise.Tidsregistreringer.Add(new model.Tidsregistrering(
-                new DateTime(2024, 5, 8, 8, 30, 0),
-                new DateTime(2024, 5, 8, 12, 0, 0),
+                new DateTime(2025, 5, 8, 8, 30, 0),
+                new DateTime(2025, 5, 8, 12, 0, 0),
                 sag1.Id));
 
            

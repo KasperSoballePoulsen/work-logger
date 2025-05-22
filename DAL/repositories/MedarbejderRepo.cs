@@ -47,18 +47,7 @@ namespace DAL.repositories
             }
         }
 
-        /*public static model.Medarbejder GetMedarbejderWithTidsregistreringer(int medarbejderId)
-        {
-            using (WorkLoggerContext context = new WorkLoggerContext())
-            {
-                return context.Medarbejdere
-                    .Include(m => m.Afdeling)
-                    .Include(m => m.Tidsregistreringer)
-                    .FirstOrDefault(m => m.Id == medarbejderId);
-            }
-        }*/
-
-
+       
         public static List<string> GetMedarbejderInitialer()
         {
             using (WorkLoggerContext context = new WorkLoggerContext())
@@ -68,6 +57,19 @@ namespace DAL.repositories
 
             }
         }
-        
+
+        public static void OpdaterMedarbejder(string updatedInitialer, string updatedNavn, string updatedCprNr, int medarbejderId)
+        {
+            using (WorkLoggerContext context = new WorkLoggerContext())
+            {
+                DAL.model.Medarbejder medarbejder = context.Medarbejdere.FirstOrDefault(m => m.Id == medarbejderId);
+                medarbejder.Initialer = updatedInitialer;
+                medarbejder.Navn = updatedNavn;
+                medarbejder.CPRNummer = updatedCprNr;
+
+                context.SaveChanges();
+            }
+
+        }
     }
 }
