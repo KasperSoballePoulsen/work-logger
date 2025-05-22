@@ -34,7 +34,7 @@ namespace WebApp.Controllers
             
             model.Medarbejdere = MedarbejderBLL
                 .GetMedarbejdereFraAfdeling(model.ValgtAfdelingId)
-                    .Select(m => new SelectListItem { Value = m.Id.ToString(), Text = m.Navn })
+                    .Select(m => new SelectListItem { Value = m.Id.ToString(), Text = m.Initialer })
                     .ToList();
 
             model.Sager = SagBLL.GetSagerByAfdelingId(model.ValgtAfdelingId)

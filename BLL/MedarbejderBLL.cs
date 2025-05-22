@@ -56,10 +56,17 @@ namespace BLL
 
 
 
+        private static bool IsUnikkeInitialer(string initialerToCheck, int medarbejderId)
+        {
+            List<DAL.model.Medarbejder> medarbejdere = MedarbejderRepo.GetMedarbejdereWithoutTidsregistreringer();
+            bool exists = medarbejdere.Any(medarbejder => medarbejder.Initialer == initialerToCheck && medarbejder.Id != medarbejderId);
+            return !exists;
+        }
+
         private static bool IsUnikkeInitialer(string initialerToCheck)
         {
-            List<string> medarbejderInitialer = MedarbejderRepo.GetMedarbejderInitialer();
-            bool exists = medarbejderInitialer.Any(initialer => initialer == initialerToCheck);
+            List<string> alleInitialer = MedarbejderRepo.GetMedarbejderInitialer();
+            bool exists = alleInitialer.Any(initialer => initialer == initialerToCheck);
             return !exists;
         }
 
@@ -86,12 +93,13 @@ namespace BLL
 
         public static void OpdaterMedarbejder(string updatedInitialer, string updatedNavn, string updatedCprNr, int medarbejderId)
         {
-            if (updatedInitialer.Length == 0 || updatedNavn.Length == 0 || updatedCprNr.Length == 0)
+            string updatedInitialerUpper = updatedInitialer.ToUpper();
+            if (updatedInitialerUpper.Length == 0 || updatedNavn.Length == 0 || updatedCprNr.Length == 0)
             {
                 throw new ArgumentException("Ingen felter må være tomme");
 
             }
-            if (!IsUnikkeInitialer(updatedInitialer))
+            if (!IsUnikkeInitialer(updatedInitialerUpper, medarbejderId))
             {
                 throw new ArgumentException("Initialer skal være en unik kombination af bogstaver");
 
@@ -101,7 +109,7 @@ namespace BLL
                 throw new ArgumentException("CPR-nummer skal skrives på formatet DDMMYY-XXXX");
             }
 
-            MedarbejderRepo.OpdaterMedarbejder(updatedInitialer, updatedNavn, updatedCprNr, medarbejderId);
+            MedarbejderRepo.OpdaterMedarbejder(updatedInitialerUpper, updatedNavn, updatedCprNr, medarbejderId);
         }
     }
 }

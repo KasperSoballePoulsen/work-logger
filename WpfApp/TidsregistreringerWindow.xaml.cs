@@ -24,16 +24,16 @@ namespace WpfApp
     public partial class TidsregistreringerWindow : Window
     {
         private List<DTO.model.Tidsregistrering> alleTidsregistreringer;
-        //private ObservableCollection<DTO.model.Tidsregistrering> tidsregistreringer;
+        
         private ObservableCollection<TidsregistreringViewModel> tidsregistreringer;
-        private DTO.model.Medarbejder medarbejder;
+        //private DTO.model.Medarbejder medarbejder;
         public TidsregistreringerWindow(DTO.model.Medarbejder medarbejder)
         {
             InitializeComponent();
 
             alleTidsregistreringer = TidsregistreringBLL.GetTidsregistreringer(medarbejder.Id);
 
-            this.medarbejder = medarbejder;
+            DataContext = medarbejder.Initialer;
             tidsregistreringer = new ObservableCollection<TidsregistreringViewModel>();
             TidsregistreringerListBox.ItemsSource = tidsregistreringer;
 
