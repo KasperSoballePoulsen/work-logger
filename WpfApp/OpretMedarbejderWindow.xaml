@@ -17,9 +17,9 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
-            <!-- Til labels -->
+            
             <ColumnDefinition Width="*"/>
-            <!-- Til tekstbokse -->
+            
         </Grid.ColumnDefinitions>
 
         <TextBlock Text="Opret Medarbejder" 

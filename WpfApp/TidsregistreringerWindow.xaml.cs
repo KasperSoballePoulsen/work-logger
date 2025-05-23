@@ -114,6 +114,15 @@ namespace WpfApp
             AarComboBox.IsEnabled = false;
             PeriodeComboBox.IsEnabled = false;
 
+            PeriodetypeLabel.Foreground = Brushes.Gray;
+            AarLabel.Foreground = Brushes.Gray;
+            PeriodeLabel.Foreground = Brushes.Gray;
+
+            PeriodetypeLabel.FontWeight = FontWeights.Normal;
+            AarLabel.FontWeight = FontWeights.Normal;
+            PeriodeLabel.FontWeight = FontWeights.Normal;
+            PeriodetypeComboBox.Foreground = Brushes.Gray;
+
             tidsregistreringer.Clear();
             foreach (var tidsregistrering in alleTidsregistreringer)
             {
@@ -136,6 +145,16 @@ namespace WpfApp
             PeriodetypeComboBox.IsEnabled = true;
             AarComboBox.IsEnabled = true;
             PeriodeComboBox.IsEnabled = true;
+
+            PeriodetypeLabel.Foreground = Brushes.Black;
+            AarLabel.Foreground = Brushes.Black;
+            PeriodeLabel.Foreground = Brushes.Black;
+            PeriodetypeComboBox.Foreground = Brushes.Black;
+
+            PeriodetypeLabel.FontWeight = FontWeights.SemiBold;
+            AarLabel.FontWeight = FontWeights.SemiBold;
+            PeriodeLabel.FontWeight = FontWeights.SemiBold;
+
 
             AarComboBox.SelectedItem = null;
             PeriodeComboBox.SelectedItem = null;
